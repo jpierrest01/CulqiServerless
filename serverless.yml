@@ -1,0 +1,31 @@
+service: my-serverless-service
+provider:
+  name: aws
+  runtime: nodejs14.x  # O usa la versión de Node.js que necesites
+
+functions:
+  myLambdaFunction:
+    handler: build/lambda-functions/function1.handler  # La ubicación de tu función compilada
+    events:
+      - http:
+          path: /my-endpoint
+          method: POST  # Puedes especificar el método HTTP que desees (GET, POST, etc.)
+
+custom:
+  stage: ${opt:stage, 'dev'}  # Define el stage (por ejemplo, 'dev' o 'prod') desde la línea de comandos
+
+plugins:
+  - serverless-offline  # Si deseas ejecutar tu Lambda localmente
+
+resources:
+  Resources:
+    MyRDSInstance:
+      Type: AWS::RDS::DBInstance
+      Properties:
+        DBInstanceIdentifier: mydbinstance
+        AllocatedStorage: 20
+        DBInstanceClass: db.t2.micro
+        Engine: mysql
+        MasterUsername: myusername
+        MasterUserPassword: mypassword
+        # Otras propiedades de configuración de tu instancia de base de datos MySQL

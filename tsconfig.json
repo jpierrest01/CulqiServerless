@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "ES6",             // Nivel de JavaScript al que se compilará
+      "module": "commonjs",        // Módulo CommonJS para Node.js
+      "outDir": "./dist",          // Carpeta donde se compilarán los archivos JavaScript
+      "rootDir": "./src",          // Carpeta donde se encuentran los archivos fuente TypeScript
+      "strict": true,              // Habilitar modo estricto
+      "esModuleInterop": true,     // Habilitar la interoperabilidad de módulos
+      "skipLibCheck": true,        // Omitir la comprobación de librería de definiciones de TypeScript
+    },
+    "include": ["src/**/*.ts"],    // Patrón para incluir archivos TypeScript
+    "exclude": ["node_modules"]    // Carpetas o archivos a excluir de la compilación
+  }
+  
